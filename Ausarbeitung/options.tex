@@ -1,0 +1,125 @@
+
+
+% Dictum schöner aussehen lassen
+\renewcommand*{\dictumwidth}{.45\textwidth}
+
+% Neue Absätze nicht einziehen, das zieht sonst grauenhaft aus.
+\KOMAoption{parskip}{half-}
+
+% Abkürzende Befehle:
+
+
+\newcommand{\keyword}[1]{\textbf{#1}}
+\newcommand{\probl}[1]{\textsc{#1}}
+
+
+
+% Listings
+
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkred}{rgb}{0.6,0.0,0.0}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  showstringspaces=false,
+  commentstyle=\color{gray}\upshape
+}
+\lstdefinelanguage{XML}
+{
+  basicstyle=\ttfamily,
+  morestring=[s]{"}{"},
+  morecomment=[s]{?}{?},
+  morecomment=[s]{!--}{--},
+  commentstyle=\color{darkgreen},
+  moredelim=[s][\color{black}]{>}{<},
+  moredelim=[s][\color{red}]{\ }{=},
+  stringstyle=\color{blue},
+  identifierstyle=\color{darkred}
+}
+
+% Theoreme:
+\makeatletter
+\newtheoremstyle{breakNormalHeader}%
+{\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont
+				##1\ ##2\theorem@separator}\hbox{\strut}}}]}%
+{\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont
+				##1\ ##2\normalfont\unboldmath\ (##3)\theorem@separator}\hbox{\strut}}}]}
+\newtheoremstyle{breakSCHeader}%
+{\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont
+				##1\ ##2\theorem@separator}\hbox{\strut}}}]}%
+{\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont
+				##1\ ##2\sc\unboldmath\ (##3)\theorem@separator}\hbox{\strut}}}]}
+\makeatother
+
+\theorembodyfont{\normalfont}
+\theoremstyle{breakNormalHeader}
+
+\newcounter{theoCounter} 
+\numberwithin{theoCounter}{chapter}
+\newcounter{exmpCounter}
+\numberwithin{exmpCounter}{chapter}
+
+
+%\newtheorem{definition}[theoCounter]{Definition}
+%\newtheorem{lemma}[theoCounter]{Lemma}
+%\newtheorem{theorem}[theoCounter]{Theorem}
+%\newtheorem{korolar}[theoCounter]{Korollar}
+%\newtheorem{satz}[theoCounter]{Satz}
+%\newtheorem{fact}[theoCounter]{Fakt}
+%\newtheorem{example}[exmpCounter]{Beispiel}
+
+\theoreminframepreskip{0pt}
+\theoreminframepostskip{0pt}
+\theoremframepreskip{0cm}
+\theoremframepostskip{0cm}
+\tikzstyle{thmbox} = [rounded corners, fill=gray!10, inner sep=3pt]
+\newcommand\thmbox[1]{%
+	\noindent\begin{tikzpicture}%
+	\node [thmbox] (box){%
+		\begin{minipage}{1.00\textwidth}%
+		#1%
+		\end{minipage}%
+	};%
+	\end{tikzpicture}}
+\let\theoremframecommand\thmbox
+\newshadedtheorem{definition}[theoCounter]{Definition}
+\tikzstyle{thmboxx} = [fill=gray!10, inner sep=3pt]
+\newcommand\thmboxx[1]{%
+	\noindent\begin{tikzpicture}%
+	\node [thmboxx] (box){%
+		\begin{minipage}{1.00\textwidth}%
+		#1%
+		\end{minipage}%
+	};%
+	\end{tikzpicture}}
+\let\theoremframecommand\thmboxx
+\newshadedtheorem{lemma}[theoCounter]{Lemma}
+\newshadedtheorem{theorem}[theoCounter]{Theorem}
+\newshadedtheorem{korolar}[theoCounter]{Korollar}
+\newshadedtheorem{satz}[theoCounter]{Satz}
+\newshadedtheorem{fact}[theoCounter]{Fakt}
+\newtheorem{example}[exmpCounter]{Beispiel}
+
+\theoremstyle{breakSCHeader}
+\theoremheaderfont{\bfseries\scshape}
+\newframedtheorem{problem}[theoCounter]{Problem}
+%\newtheorem{problem}[theoCounter]{Problem}
+
+\theoremstyle{breakNormalHeader}
+\theoremheaderfont{\normalfont}\theorembodyfont{\upshape}
+\theoremstyle{nonumberplain}
+\theoremseparator{.}
+\theoremsymbol{\rule{1ex}{1ex}}
+\newtheorem{proof}{Beweis}
+
+% Nummerierte Formeln nach Kapiteln
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+
+%\baselineskip14pt\normalfont
+%\renewcommand{\baselinestretch}{1}
+\setlength\abovedisplayshortskip{0pt}
+\setlength\belowdisplayshortskip{0pt}
+\setlength\abovedisplayskip{2pt}
+\setlength\belowdisplayskip{2pt}

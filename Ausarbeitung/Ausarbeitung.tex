@@ -1,0 +1,55 @@
+\documentclass[fontsize=11pt,a4paper,toc=bibliography,listof=totoc,BCOR=10mm,pdftex]{scrreprt}
+
+
+\input{packages}
+
+\input{options}
+
+
+\titlehead{Titlehead}
+\subject{Subject}
+\publishers{Puplisher}
+\title{Title
+%	\thanks{e}
+	}
+\author{Kai Sauerwald}
+
+\begin{document}
+
+
+\pagenumbering{roman} % Setz
+\maketitle % Vorläufiger Titel, man sollte eine vernüftige Vorlage mal bauen
+
+
+%\maketitle
+\tableofcontents
+
+\cleardoublepage % Inhalt beginnt erst auf der nächsten rechten Seite
+\setcounter{page}{1} % Nummerierung korrigieren
+\pagenumbering{arabic} % Zahlen wieder als Nummerierung verwenden
+%\setcounter{chapter}{-1} % Wenn die Einleitung Punkt 0 sein soll..
+
+\chapter{Einleitung} \label{chap:introduction}
+%\input{docs/einleitung}
+
+\part{Überblick}  \label{part:overview}
+
+\part{Verzeichnisse}
+
+% Literatur-Verzeichnis
+\bibliographystyle{amsalpha}
+\bibliography{literatur}
+
+% Figur-Verzeichnis
+\listoffigures
+\theoremlisttype{all}
+\listtheorems{example}
+
+\appendix
+\part{Appendix}
+%Zähler für die Theoreme ändern
+\renewcommand{\thetheoCounter}{\Alph{chapter}.\arabic{theoCounter}}
+\chapter{apx1}  \label{chap:apx:documentation}
+
+
+\end{document}
